@@ -45,7 +45,9 @@ export function HomePage() {
         Go!
       </Link>
 
+      <span>1</span>
       <span>{dt}</span>
+      <span>2</span>
     </main>
   );
 }
