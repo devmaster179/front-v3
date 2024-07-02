@@ -11,7 +11,7 @@ export function HomePage() {
   const [lootboxesCount, setLootboxesCount] = useState(0);
   const [USDT, setUSDT] = useState(0);
   const [LOOT, setLOOT] = useState(0);
-  const [loots, setLoots] = useState([]);
+  const [loots, setLoots] = useState(["hey"]);
 
   // TODO avoid unnecceary calls if receiver_id is not NULL already
 
