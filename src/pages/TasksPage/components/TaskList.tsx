@@ -2,7 +2,7 @@ import { ActionButton } from "@/pages/TasksPage/components/ActionButton";
 import { ActionItem } from "@/pages/TasksPage/components/ActionItem";
 
 interface TasksListProps {
-  onShare: (prevState: boolean) => void;
+  onShare: () => void;
 }
 
 export const TasksList = ({ onShare }: TasksListProps) => {
