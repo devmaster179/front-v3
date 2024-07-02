@@ -20,19 +20,24 @@ export function HomePage() {
 
       const [lootbox, usersLootboxes] = await Promise.all([
         supabase.from("lootboxes").select().eq("id", initData.startParam),
-        supabase.from("lootboxes").select().eq("receiver_id", initData.user.id),
+        supabase
+          .from("lootboxes")
+          .select("balance")
+          .eq("receiver_id", initData.user.id),
       ]);
 
       setLootboxesCount(usersLootboxes.length());
 
       setUSDT(
         usersLootboxes
+          .map((i) => i.balance)
           .filter((i) => i < 11)
           .reduce((accumulator, currentValue) => accumulator + currentValue)
       );
 
       setLOOT(
         usersLootboxes
+          .map((i) => i.balance)
           .filter((i) => i > 40)
           .reduce((accumulator, currentValue) => accumulator + currentValue)
       );
