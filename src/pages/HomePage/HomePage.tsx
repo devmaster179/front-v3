@@ -26,17 +26,17 @@ export function HomePage() {
           .eq("receiver_id", initData.user.id),
       ]);
 
-      setLootboxesCount(usersLootboxes.length());
+      setLootboxesCount(usersLootboxes.data.length());
 
       setUSDT(
-        usersLootboxes
+        usersLootboxes.data
           .map((i) => i.balance)
           .filter((i) => i < 11)
           .reduce((accumulator, currentValue) => accumulator + currentValue)
       );
 
       setLOOT(
-        usersLootboxes
+        usersLootboxes.data
           .map((i) => i.balance)
           .filter((i) => i > 40)
           .reduce((accumulator, currentValue) => accumulator + currentValue)
