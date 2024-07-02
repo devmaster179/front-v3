@@ -8,7 +8,7 @@ import { supabase } from "../../supabase";
 export function HomePage() {
   const initData = initInitData();
 
-  const [dt, setDt] = useState([]);
+  const [dt, setDt] = useState("");
 
   // TODO avoid unnecceary calls if receiver_id is not NULL already
 
@@ -46,7 +46,7 @@ export function HomePage() {
       </Link>
 
       <span>1</span>
-      <span>{dt}</span>
+      <span>hey</span>
       <span>2</span>
     </main>
   );
