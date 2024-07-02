@@ -53,7 +53,7 @@ export function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
       <img src="./lootbox-closed.gif" alt="loading..." />
-      <span className="text-center -mt-10 pb-5 ">
+      <span className="text-center mt-10 pb-5 ">
         {`You've already opened ${lootboxesCount} lootboxes and your balance is ${USDT} USDT and ${LOOT} LOOT. 
         To open this box, you need to fulfill a task`}
       </span>
