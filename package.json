@@ -14,6 +14,7 @@
     "predeploy": "pnpm run build"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.44.2",
     "@telegram-apps/telegram-ui": "2.1.4",
     "@tma.js/react-router-integration": "4.0.3",
     "@tma.js/sdk-react": "2.2.5",
