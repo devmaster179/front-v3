@@ -23,7 +23,7 @@ export function HomePage() {
         supabase.from("lootboxes").select().eq("receiver_id", initData.user.id),
       ]);
 
-      setLootboxesCount(usersLootboxes.length);
+      setLootboxesCount(usersLootboxes.length());
 
       setUSDT(
         usersLootboxes
