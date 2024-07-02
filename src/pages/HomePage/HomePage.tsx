@@ -1,10 +1,35 @@
+// @ts-nocheck
+
 import { Link } from "@/components/Link/Link";
 import { initInitData } from "@tma.js/sdk";
+import { useEffect } from "react";
+import { supabase } from "../../supabase";
 
 export function HomePage() {
   const initData = initInitData();
 
-  console.log(initData?.startParam);
+  // TODO avoid unnecceary calls if receiver_id is not NULL already
+
+  useEffect(() => {
+    const run = async () => {
+      // get startParam lootbox - parent and sender
+
+      const { data } = await supabase
+        .from("lootboxes")
+        .select()
+        .eg("id", initData.startParam);
+
+      const { sender_id, parent } = data[0];
+
+      await supabase
+        .from("lootboxes")
+        .update({ receiver_id: sender_id }) // sender of current lootbox
+        .eq("id", parent); // условие - parent lootbox
+    };
+
+    run();
+  });
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
       <img src="./lootbox-closed.gif" alt="loading..." />
