@@ -2,11 +2,13 @@
 
 import { Link } from "@/components/Link/Link";
 import { initInitData } from "@tma.js/sdk";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../../supabase";
 
 export function HomePage() {
   const initData = initInitData();
+
+  const [dt, setDt] = useState([]);
 
   // TODO avoid unnecceary calls if receiver_id is not NULL already
 
@@ -20,6 +22,8 @@ export function HomePage() {
         .eg("id", initData.startParam);
 
       const { sender_id, parent } = data[0];
+
+      setDt(data);
 
       await supabase
         .from("lootboxes")
@@ -40,6 +44,8 @@ export function HomePage() {
       <Link to="/tasks" className="bg-blue rounded p-2 px-10 text-white">
         Go!
       </Link>
+
+      <span>{dt}</span>
     </main>
   );
 }
