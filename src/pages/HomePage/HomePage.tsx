@@ -3,6 +3,7 @@ import { initInitData } from "@tma.js/sdk";
 
 export function HomePage() {
   const initData = initInitData();
+
   console.log(initData?.startParam);
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
@@ -14,10 +15,6 @@ export function HomePage() {
       <Link to="/tasks" className="bg-blue rounded p-2 px-10 text-white">
         Go!
       </Link>
-
-      <span>Hello</span>
-
-      <span>{initData?.startParam}</span>
     </main>
   );
 }

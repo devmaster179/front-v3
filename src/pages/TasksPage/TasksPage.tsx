@@ -31,11 +31,10 @@ export default function TasksPage() {
       .update({ sender_id: initData.user.id }) // пишем себя сендером = берем лутбокс
       .eq("id", lootbox.id);
 
-    // TODO stopped here
-    // utils.shareURL(
-    //   import.meta.env.VITE_APP_SUPABASE_URL,
-    //   "Look! Some cool app here!"
-    // );
+    utils.shareURL(
+      `${import.meta.env.VITE_APP_BOT_URL}?startapp=${lootbox.id}`,
+      "Look! Some cool app here!"
+    );
   };
 
   return (
