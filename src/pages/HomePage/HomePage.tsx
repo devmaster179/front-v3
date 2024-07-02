@@ -27,7 +27,7 @@ export function HomePage() {
           .eq("receiver_id", initData.user.id),
       ]);
 
-      setLootboxesCount(usersLootboxes.data.length());
+      setLootboxesCount(usersLootboxes.data.length);
 
       setLoots(usersLootboxes);
 
