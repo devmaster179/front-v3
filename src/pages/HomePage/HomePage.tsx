@@ -19,7 +19,7 @@ export function HomePage() {
       const { data } = await supabase
         .from("lootboxes")
         .select()
-        .eg("id", initData.startParam);
+        .eq("id", initData.startParam);
 
       const { sender_id, parent } = data[0];
 
