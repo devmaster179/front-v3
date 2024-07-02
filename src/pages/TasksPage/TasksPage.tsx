@@ -8,7 +8,7 @@ export default function TasksPage() {
     <main className="flex min-h-screen flex-col items-center justify-center">
       {
         // hasShared ? <ClaimReward /> :
-        <TasksList onShare={} />
+        <TasksList onShare={() => {}} />
       }
     </main>
   );
