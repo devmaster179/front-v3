@@ -8,7 +8,9 @@ import { supabase } from "../../supabase";
 export function HomePage() {
   const initData = initInitData();
 
-  const [dt, setDt] = useState("");
+  const [lootboxesCount, setLootboxesCount] = useState(0);
+  const [USDT, setUSDT] = useState(0);
+  const [LOOT, setLOOT] = useState(0);
 
   // TODO avoid unnecceary calls if receiver_id is not NULL already
 
@@ -16,14 +18,28 @@ export function HomePage() {
     const run = async () => {
       // get startParam lootbox - parent and sender
 
-      const { data } = await supabase
-        .from("lootboxes")
-        .select()
-        .eq("id", initData.startParam);
+      const [lootbox, usersLootboxes] = await Promise.all([
+        supabase.from("lootboxes").select().eq("id", initData.startParam),
+        supabase.from("lootboxes").select().eq("receiver_id", initData.user.id),
+      ]);
+
+      setLootboxesCount(usersLootboxes.length);
+
+      setUSDT(
+        usersLootboxes
+          .filter((i) => i < 11)
+          .reduce((accumulator, currentValue) => accumulator + currentValue)
+      );
+
+      setLOOT(
+        usersLootboxes
+          .filter((i) => i > 40)
+          .reduce((accumulator, currentValue) => accumulator + currentValue)
+      );
+
+      const { data } = lootbox;
 
       const { sender_id, parent } = data[0];
-
-      setDt(data);
 
       await supabase
         .from("lootboxes")
@@ -38,16 +54,13 @@ export function HomePage() {
     <main className="flex min-h-screen flex-col items-center justify-center">
       <img src="./lootbox-closed.gif" alt="loading..." />
       <span className="text-center -mt-10 pb-5 ">
-        To open this box, you need to fulfill a task
+        {`You've already opened ${lootboxesCount} lootboxes and your balance is ${USDT} USDT and ${LOOT} LOOT. 
+        To open this box, you need to fulfill a task`}
       </span>
 
       <Link to="/tasks" className="bg-blue rounded p-2 px-10 text-white">
         Go!
       </Link>
-
-      <span>1</span>
-      <span>hey</span>
-      <span>2</span>
     </main>
   );
 }
