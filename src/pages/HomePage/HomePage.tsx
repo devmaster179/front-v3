@@ -11,7 +11,7 @@ export function HomePage() {
   const [lootboxesCount, setLootboxesCount] = useState(0);
   const [USDT, setUSDT] = useState(0);
   const [LOOT, setLOOT] = useState(0);
-  const [loots, setLoots] = useState(["hey"]);
+  const [loots, setLoots] = useState([]);
 
   // TODO avoid unnecceary calls if receiver_id is not NULL already
 
@@ -65,7 +65,6 @@ export function HomePage() {
         {`You've already opened ${lootboxesCount} lootboxes and your balance is ${USDT} USDT and ${LOOT} LOOT. 
         To open this box, you need to fulfill a task`}
       </span>
-      <span>{JSON.stringify(loots)}</span>
 
       <Link to="/tasks" className="bg-blue rounded p-2 px-10 text-white">
         Go!
