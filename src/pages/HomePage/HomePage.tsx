@@ -11,11 +11,13 @@ export function HomePage() {
         To open this box, you need to fulfill a task
       </span>
 
-      <span>{initData?.startParam}</span>
-
       <Link to="/tasks" className="bg-blue rounded p-2 px-10 text-white">
         Go!
       </Link>
+
+      <span>Hello</span>
+
+      <span>{initData?.startParam}</span>
     </main>
   );
 }
