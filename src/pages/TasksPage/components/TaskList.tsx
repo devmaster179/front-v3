@@ -19,8 +19,11 @@ export const TasksList = ({ onShare }: TasksListProps) => {
 
   const [steps, setSteps] = useState<number[]>([]);
 
+  const [init, setInit] = useState<{}[]>([]);
+
   const _onShare = async () => {
     try {
+      setInit(initData);
       setSteps([...steps, 1]);
       const { data } = await supabase
         .from("lootboxes")
@@ -70,6 +73,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
         />
         <span>{JSON.stringify(err)}</span>
         <span>{JSON.stringify(steps)}</span>
+        <span>{JSON.stringify(init)}</span>
       </div>
     </>
   );
