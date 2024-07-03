@@ -30,12 +30,12 @@ export const TasksList = ({ onShare }: TasksListProps) => {
       if (!data?.length) return;
       setSteps([...steps, 3]);
       const lootbox = data[Math.floor(Math.random() * data.length)];
-      setSteps([...steps, 1]);
+      setSteps([...steps, 3]);
       await supabase
         .from("lootboxes")
         .update({
           sender_id: initData.user.id,
-          parent: initData.startParam,
+          // parent: initData.startParam, // TODO revert
         }) // пишем себя сендером = берем лутбокс
         .eq("id", lootbox.id);
       setSteps([...steps, 4]);
