@@ -32,7 +32,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
         .from("lootboxes")
         .update({
           sender_id: initData.user.id,
-          parent: initData.startParam, // TODO revert
+          // parent: initData.startParam, // TODO revert
         }) // пишем себя сендером = берем лутбокс
         .eq("id", lootbox.id);
 
