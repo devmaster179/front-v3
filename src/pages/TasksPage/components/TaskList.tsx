@@ -62,6 +62,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
           actionButton={<ActionButton onShare={onShare}>Join</ActionButton>}
         />
         <span>{JSON.stringify(err)}</span>
+        <span>{JSON.stringify(data)}</span>
       </div>
     </>
   );
