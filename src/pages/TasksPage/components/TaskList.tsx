@@ -16,31 +16,34 @@ export const TasksList = ({ onShare }: TasksListProps) => {
   const utils = initUtils();
 
   const [err, setErr] = useState("");
-  const [res, setRes] = useState([]);
+
+  const [steps, setSteps] = useState<number[]>([]);
 
   const _onShare = async () => {
     try {
+      setSteps([...steps, 1]);
       const { data } = await supabase
         .from("lootboxes")
         .select("id")
         .is("sender_id", null); // get not used lootboxes only
-
+      setSteps([...steps, 2]);
       if (!data?.length) return;
-      setRes(data);
+      setSteps([...steps, 3]);
       const lootbox = data[Math.floor(Math.random() * data.length)];
-
+      setSteps([...steps, 1]);
       await supabase
         .from("lootboxes")
         .update({
           sender_id: initData.user.id,
-          parent: initData.startParam | NULL,
+          parent: initData.startParam,
         }) // пишем себя сендером = берем лутбокс
         .eq("id", lootbox.id);
-
+      setSteps([...steps, 4]);
       utils.shareURL(
         `${import.meta.env.VITE_APP_BOT_URL}?startapp=${lootbox.id}`,
         "Look! Some cool app here!"
       );
+      setSteps([...steps, 5]);
     } catch (error) {
       setErr(error);
       console.error(error);
@@ -66,7 +69,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
           actionButton={<ActionButton onShare={onShare}>Join</ActionButton>}
         />
         <span>{JSON.stringify(err)}</span>
-        <span>{JSON.stringify(res)}</span>
+        <span>{JSON.stringify(steps)}</span>
       </div>
     </>
   );
