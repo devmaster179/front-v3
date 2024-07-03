@@ -35,7 +35,7 @@ export function HomePage() {
         .update({ receiver_id: sender_id }) // sender of current lootbox
         .eq("id", parent); // условие - parent lootbox
 
-      if (!usersLootboxes?.data?.length) return;
+      // if (!usersLootboxes?.data?.length) return;
 
       setLootboxesCount(usersLootboxes?.data.length);
 
