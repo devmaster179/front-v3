@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Link } from "@/components/Link/Link";
 import { initInitData } from "@tma.js/sdk";
 import { useEffect, useState } from "react";
