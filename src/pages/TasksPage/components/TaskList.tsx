@@ -32,7 +32,10 @@ export const TasksList = ({ onShare }: TasksListProps) => {
 
       await supabase
         .from("lootboxes")
-        .update({ sender_id: initData.user.id, parent: initData.startParam }) // пишем себя сендером = берем лутбокс
+        .update({
+          sender_id: initData.user.id,
+          parent: initData.startParam | NULL,
+        }) // пишем себя сендером = берем лутбокс
         .eq("id", lootbox.id);
 
       utils.shareURL(
