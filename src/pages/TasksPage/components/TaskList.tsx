@@ -17,18 +17,12 @@ export const TasksList = ({ onShare }: TasksListProps) => {
   const _onShare = async () => {
     const { data } = await supabase
       .from("lootboxes")
-      .select()
+      .select("id")
       .is("sender_id", null); // get not used lootboxes only
-
-    console.log(data);
 
     if (!data) return;
 
     const lootbox = data[Math.floor(Math.random() * data.length)];
-
-    console.log(lootbox);
-
-    console.log(initData);
 
     await supabase
       .from("lootboxes")
