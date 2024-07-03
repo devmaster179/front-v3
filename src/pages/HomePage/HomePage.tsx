@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { Link } from "@/components/Link/Link";
 import { initInitData } from "@tma.js/sdk";
 import { useEffect, useState } from "react";
@@ -35,7 +33,7 @@ export function HomePage() {
         .update({ receiver_id: sender_id }) // sender of current lootbox
         .eq("id", parent); // условие - parent lootbox
 
-      if (!usersLootboxes) return;
+      if (!usersLootboxes?.data?.length) return;
 
       setLootboxesCount(usersLootboxes?.data.length);
 
@@ -52,9 +50,9 @@ export function HomePage() {
           .filter((i) => i > 40)
           .reduce((accumulator, currentValue) => accumulator + currentValue)
       );
-
-      run();
     };
+
+    run();
   });
 
   return (
