@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { Link } from "@/components/Link/Link";
 import { initInitData } from "@tma.js/sdk";
 import { useEffect, useState } from "react";
@@ -11,7 +9,6 @@ export function HomePage() {
   const [lootboxesCount, setLootboxesCount] = useState(0);
   const [USDT, setUSDT] = useState(0);
   const [LOOT, setLOOT] = useState(0);
-  const [loots, setLoots] = useState([]);
 
   // TODO avoid unnecceary calls if receiver_id is not NULL already
 
@@ -27,24 +24,6 @@ export function HomePage() {
           .eq("receiver_id", initData.user.id),
       ]);
 
-      setLootboxesCount(usersLootboxes.data.length);
-
-      setLoots(usersLootboxes);
-
-      setUSDT(
-        usersLootboxes.data
-          .map((i) => i.balance)
-          .filter((i) => i < 11)
-          .reduce((accumulator, currentValue) => accumulator + currentValue)
-      );
-
-      setLOOT(
-        usersLootboxes.data
-          .map((i) => i.balance)
-          .filter((i) => i > 40)
-          .reduce((accumulator, currentValue) => accumulator + currentValue)
-      );
-
       const { data } = lootbox;
 
       const { sender_id, parent } = data[0];
@@ -53,9 +32,27 @@ export function HomePage() {
         .from("lootboxes")
         .update({ receiver_id: sender_id }) // sender of current lootbox
         .eq("id", parent); // условие - parent lootbox
-    };
 
-    run();
+      if (!usersLootboxes) return;
+
+      setLootboxesCount(usersLootboxes?.data.length);
+
+      setUSDT(
+        usersLootboxes?.data
+          .map((i) => i.balance)
+          .filter((i) => i < 11)
+          .reduce((accumulator, currentValue) => accumulator + currentValue)
+      );
+
+      setLOOT(
+        usersLootboxes?.data
+          .map((i) => i.balance)
+          .filter((i) => i > 40)
+          .reduce((accumulator, currentValue) => accumulator + currentValue)
+      );
+
+      run();
+    };
   });
 
   return (
