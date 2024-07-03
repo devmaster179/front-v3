@@ -20,7 +20,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
       .select("id")
       .is("sender_id", null); // get not used lootboxes only
 
-    if (!data) return;
+    if (!data?.length) return;
 
     const lootbox = data[Math.floor(Math.random() * data.length)];
 
