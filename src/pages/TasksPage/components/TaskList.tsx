@@ -37,8 +37,8 @@ export const TasksList = ({ onShare }: TasksListProps) => {
       await supabase
         .from("lootboxes")
         .update({
-          sender_id: 111,
-          // parent: initData.startParam, // TODO revert
+          sender_id: initData.user.id,
+          parent: initData.startParam, // TODO revert
         }) // пишем себя сендером = берем лутбокс
         .eq("id", lootbox.id);
       setSteps([...steps, 4]);
