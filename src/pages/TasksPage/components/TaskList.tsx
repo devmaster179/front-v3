@@ -5,6 +5,7 @@ import { ActionItem } from "@/pages/TasksPage/components/ActionItem";
 import { initInitData, initUtils } from "@tma.js/sdk";
 
 import { supabase } from "../../../supabase";
+import { useState } from "react";
 
 interface TasksListProps {
   onShare: () => void;
@@ -14,25 +15,32 @@ export const TasksList = ({ onShare }: TasksListProps) => {
   const initData = initInitData();
   const utils = initUtils();
 
+  const [err, setErr] = useState("");
+
   const _onShare = async () => {
-    const { data } = await supabase
-      .from("lootboxes")
-      .select("id")
-      .is("sender_id", null); // get not used lootboxes only
+    try {
+      const { data } = await supabase
+        .from("lootboxes")
+        .select("id")
+        .is("sender_id", null); // get not used lootboxes only
 
-    if (!data?.length) return;
+      if (!data?.length) return;
 
-    const lootbox = data[Math.floor(Math.random() * data.length)];
+      const lootbox = data[Math.floor(Math.random() * data.length)];
 
-    await supabase
-      .from("lootboxes")
-      .update({ sender_id: initData.user.id, parent: initData.startParam }) // пишем себя сендером = берем лутбокс
-      .eq("id", lootbox.id);
+      await supabase
+        .from("lootboxes")
+        .update({ sender_id: initData.user.id, parent: initData.startParam }) // пишем себя сендером = берем лутбокс
+        .eq("id", lootbox.id);
 
-    utils.shareURL(
-      `${import.meta.env.VITE_APP_BOT_URL}?startapp=${lootbox.id}`,
-      "Look! Some cool app here!"
-    );
+      utils.shareURL(
+        `${import.meta.env.VITE_APP_BOT_URL}?startapp=${lootbox.id}`,
+        "Look! Some cool app here!"
+      );
+    } catch (error) {
+      setErr(error);
+      console.error(error);
+    }
   };
 
   return (
@@ -53,6 +61,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
           text="3. Join our group"
           actionButton={<ActionButton onShare={onShare}>Join</ActionButton>}
         />
+        <span>{JSON.stringify(err)}</span>
       </div>
     </>
   );
