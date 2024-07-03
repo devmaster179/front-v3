@@ -16,6 +16,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
   const utils = initUtils();
 
   const [err, setErr] = useState("");
+  const [res, setRes] = useState([]);
 
   const _onShare = async () => {
     try {
@@ -24,6 +25,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
         .select("id")
         .is("sender_id", null); // get not used lootboxes only
 
+      setRes(data);
       if (!data?.length) return;
 
       const lootbox = data[Math.floor(Math.random() * data.length)];
@@ -48,6 +50,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
       <h1 className="-mt-20 pb-5 text-center font-bold text-lg">
         Choose from one of the tasks below:
       </h1>
+      s
       <div>
         <ActionItem
           text="1. Share a lootbox with a friend/s"
@@ -62,7 +65,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
           actionButton={<ActionButton onShare={onShare}>Join</ActionButton>}
         />
         <span>{JSON.stringify(err)}</span>
-        <span>{JSON.stringify(data)}</span>
+        <span>{JSON.stringify(res)}</span>
       </div>
     </>
   );
