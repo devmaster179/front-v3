@@ -15,40 +15,32 @@ export const TasksList = ({ onShare }: TasksListProps) => {
   const initData = initInitData();
   const utils = initUtils();
 
-  const [err, setErr] = useState("");
-
-  const [steps, setSteps] = useState<number[]>([]);
-
-  const [init, setInit] = useState<{}[]>([]);
-
   const _onShare = async () => {
     try {
       setInit(initData);
-      setSteps([...steps, 1]);
+
       const { data } = await supabase
         .from("lootboxes")
         .select("id")
         .is("sender_id", null); // get not used lootboxes only
-      setSteps([...steps, 2]);
+
       if (!data?.length) return;
-      setSteps([...steps, 3]);
+
       const lootbox = data[Math.floor(Math.random() * data.length)];
-      setSteps([...steps, 3]);
+
       await supabase
         .from("lootboxes")
         .update({
           sender_id: initData.user.id,
-          // parent: initData.startParam, // TODO revert
+          parent: initData.startParam, // TODO revert
         }) // пишем себя сендером = берем лутбокс
         .eq("id", lootbox.id);
-      setSteps([...steps, 4]);
+
       utils.shareURL(
         `${import.meta.env.VITE_APP_BOT_URL}?startapp=${lootbox.id}`,
         "Look! Some cool app here!"
       );
-      setSteps([...steps, 5]);
     } catch (error) {
-      setErr(error);
       console.error(error);
     }
   };
@@ -71,9 +63,6 @@ export const TasksList = ({ onShare }: TasksListProps) => {
           text="3. Join our group"
           actionButton={<ActionButton onShare={onShare}>Join</ActionButton>}
         />
-        <span>{JSON.stringify(err)}</span>
-        <span>{JSON.stringify(steps)}</span>
-        <span>{JSON.stringify(init)}</span>
       </div>
     </>
   );
