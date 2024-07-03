@@ -5,7 +5,6 @@ import { ActionItem } from "@/pages/TasksPage/components/ActionItem";
 import { initInitData, initUtils } from "@tma.js/sdk";
 
 import { supabase } from "../../../supabase";
-import { useState } from "react";
 
 interface TasksListProps {
   onShare: () => void;
@@ -17,8 +16,6 @@ export const TasksList = ({ onShare }: TasksListProps) => {
 
   const _onShare = async () => {
     try {
-      setInit(initData);
-
       const { data } = await supabase
         .from("lootboxes")
         .select("id")
@@ -32,7 +29,7 @@ export const TasksList = ({ onShare }: TasksListProps) => {
         .from("lootboxes")
         .update({
           sender_id: initData.user.id,
-          // parent: initData.startParam, // TODO revert
+          parent: initData.startParam, // TODO revert
         }) // пишем себя сендером = берем лутбокс
         .eq("id", lootbox.id);
 

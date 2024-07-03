@@ -8,9 +8,9 @@ import { supabase } from "../../supabase";
 export function HomePage() {
   const initData = initInitData();
 
-  const [lootboxesCount, setLootboxesCount] = useState(0);
-  const [USDT, setUSDT] = useState(0);
-  const [LOOT, setLOOT] = useState(0);
+  const [lootboxesCount, setLootboxesCount] = useState(1);
+  const [USDT, setUSDT] = useState(2);
+  const [LOOT, setLOOT] = useState(3);
 
   // TODO avoid unnecceary calls if receiver_id is not NULL already
 
