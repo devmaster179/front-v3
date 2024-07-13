@@ -3,7 +3,7 @@ import { TasksList } from "@/pages/TasksPage/components/TaskList";
 import { initBackButton } from "@telegram-apps/sdk";
 import { useState } from "react";
 
-export default function TasksPage() {
+export const TasksPage = () => {
   const [backButton] = initBackButton();
   backButton.hide();
 
@@ -18,4 +18,4 @@ export default function TasksPage() {
       )}
     </main>
   );
-}
+};
