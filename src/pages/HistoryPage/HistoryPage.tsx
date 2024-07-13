@@ -24,7 +24,7 @@ export const HistoryPage = () => {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-[#1D2733]">
+    <main className="flex min-h-screen flex-col items-center bg-[#1D2733] text-white">
       {/* Header */}
       <div className="flex w-full px-2 mt-5 items-center justify-between gap-2">
         <div className="flex gap-4">

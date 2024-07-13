@@ -43,7 +43,7 @@ export const TasksList = () => {
 
   return (
     <>
-      <h1 className="-mt-20 pb-5 text-center font-bold text-lg">
+      <h1 className="-mt-20 pb-5 text-center text-white font-bold text-lg">
         Choose from one of the tasks below:
       </h1>
       <div>
