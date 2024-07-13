@@ -2,14 +2,12 @@ import { ActionButton } from "@/pages/TasksPage/components/ActionButton";
 import { ActionItem } from "@/pages/TasksPage/components/ActionItem";
 import { supabase } from "@/supabase";
 import { initInitData, initUtils } from "@telegram-apps/sdk";
+import { useNavigate } from "react-router-dom";
 
-interface TasksListProps {
-  onShare: (arg0: boolean) => void;
-}
-
-export const TasksList = ({ onShare }: TasksListProps) => {
+export const TasksList = () => {
   const initData = initInitData();
   const utils = initUtils();
+  const navigate = useNavigate();
 
   const _onShare = async () => {
     try {
@@ -35,7 +33,9 @@ export const TasksList = ({ onShare }: TasksListProps) => {
         "Look! Some cool app here!"
       );
 
-      onShare(true);
+      // onShare(true);
+
+      navigate("/history");
     } catch (error) {
       console.error(error);
     }
