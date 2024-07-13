@@ -1,7 +1,7 @@
 import { Link } from "@/components/Link/Link";
+import { supabase } from "@/supabase";
 import { initInitData } from "@telegram-apps/sdk";
 import { useEffect, useState } from "react";
-import { supabase } from "../../supabase";
 
 export function HomePage() {
   const initData = initInitData();

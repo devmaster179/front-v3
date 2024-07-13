@@ -1,8 +1,7 @@
 import { ActionButton } from "@/pages/TasksPage/components/ActionButton";
 import { ActionItem } from "@/pages/TasksPage/components/ActionItem";
+import { supabase } from "@/supabase";
 import { initInitData, initUtils } from "@telegram-apps/sdk";
-
-import { supabase } from "../../../supabase";
 
 interface TasksListProps {
   onShare: (arg0: boolean) => void;
