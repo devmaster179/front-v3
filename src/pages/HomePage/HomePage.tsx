@@ -115,7 +115,7 @@ export function HomePage() {
     <main className="flex min-h-screen flex-col items-center justify-center bg-black">
       {isSendersLootbox && (
         <span className="text-center mt-50 p-5 pt-50 text-white">
-          You can't open your lootboxes!
+          {`You can't open your lootboxes!`}
         </span>
       )}
 
@@ -127,7 +127,7 @@ export function HomePage() {
 
       {isNotFirstLootbox && (
         <span className="text-center mt-50 p-5 pt-50 text-white">
-          You can't open more than one lootbox from a user
+          {`You can't open more than one lootbox from a user`}
         </span>
       )}
 
