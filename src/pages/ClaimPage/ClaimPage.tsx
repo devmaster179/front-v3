@@ -20,9 +20,9 @@ export const ClaimPage = () => {
     <TonConnectUIProvider manifestUrl="https://lootfront.netlify.app/tonconnect-manifest.json">
       <div className="mt-10 flex flex-col items-center justify-center justify-items-center">
         <video src="123.mp4" autoPlay playsInline muted />
-        <div className="text-center items-center justify-center  text-2xl transition ease-in-out delay-150 mb-5">
+        <div className="text-white text-center items-center justify-center  text-2xl transition ease-in-out delay-150 mb-5">
           <span>
-            {showText ? "Congratulations! You have unlocked 5 Tons!" : null}
+            {showText ? `Congratulations! You have unlocked 5` : null}
           </span>
         </div>
 

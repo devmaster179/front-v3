@@ -8,7 +8,6 @@ import { initInitData } from "@telegram-apps/sdk";
 import { useUserBalance } from "@/hooks/useUserBalance";
 import { useUserTransactions } from "@/hooks/useUserTransactions";
 import { format } from "date-fns";
-import { Button } from "@telegram-apps/telegram-ui";
 
 export const HistoryPage = () => {
   const initData = initInitData();
@@ -53,7 +52,9 @@ export const HistoryPage = () => {
         <p>Transaction history</p>
 
         {userTransactions?.map((el) => {
-          console.log("time", el.created_at);
+          if (!el.sender_updated_at && !el.Status_opened) {
+            return;
+          }
           return (
             <div
               key={el.id}
@@ -67,17 +68,24 @@ export const HistoryPage = () => {
               </p>
               <p className="w-1/4">{el.receiver_id || "-"}</p>
 
-              {el.Status_opened === "recived" && <Button>See lootbox</Button>}
+              {el.Status_opened === "received" && (
+                <Link
+                  to="/claim"
+                  className="bg-blue px-2 py-1 text-white rounded-full "
+                >
+                  See lootbox
+                </Link>
+              )}
 
               {el.Status_opened === "opened" && (
                 <p>
-                  {el.balance_LOOT &&
-                    el.balance_LOOT > 0 &&
-                    `${el.balance_LOOT} LOOT`}
+                  {el.balance_LOOT && el.balance_LOOT > 0
+                    ? `${el.balance_LOOT} LOOT`
+                    : ""}
 
-                  {el.balance_USDT &&
-                    el.balance_USDT > 0 &&
-                    `${el.balance_USDT} USDt`}
+                  {el.balance_USDT && el.balance_USDT > 0
+                    ? `${el.balance_USDT} USDt`
+                    : ""}
                 </p>
               )}
 

@@ -17,13 +17,12 @@ export const useUserTransactions = ({ initData }: useUserTransactionsProps) => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await supabase
-        .from("lootboxes")
-        .select()
-        .eq("sender_id", initData?.user?.id as number);
+      const data = await supabase.from("lootboxes").select();
+      // .eq("sender_id", initData?.user?.id as number);
 
       setUserTransactions(data.data);
     };
+    console.log("useId", initData?.user?.id);
     getData();
   }, []);
 
