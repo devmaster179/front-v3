@@ -8,6 +8,7 @@ import { initInitData } from "@telegram-apps/sdk";
 import { useUserBalance } from "@/hooks/useUserBalance";
 import { useUserTransactions } from "@/hooks/useUserTransactions";
 import { format } from "date-fns";
+import { Button } from "@telegram-apps/telegram-ui";
 
 export const HistoryPage = () => {
   const initData = initInitData();
@@ -60,10 +61,28 @@ export const HistoryPage = () => {
             >
               <img src="./box.png" height={75} width={75} />
               <p className="w-fit">
-                {format(new Date(el.created_at), "hh:mm dd MMMyyyy")}
+                {el.sender_updated_at
+                  ? format(new Date(el.sender_updated_at), "hh:mm dd MMMyyyy")
+                  : "-"}
               </p>
               <p className="w-1/4">{el.receiver_id || "-"}</p>
-              <p className="w-1/4">{el.status || "-"}</p>
+
+              {el.Status_opened === "recived" && <Button>See lootbox</Button>}
+
+              {el.Status_opened === "opened" && (
+                <p>
+                  {el.balance_LOOT &&
+                    el.balance_LOOT > 0 &&
+                    `${el.balance_LOOT} LOOT`}
+
+                  {el.balance_USDT &&
+                    el.balance_USDT > 0 &&
+                    `${el.balance_USDT} USDt`}
+                </p>
+              )}
+
+              {el.Status_opened === "unopened" && <p>Unopened</p>}
+              {/* <p className="w-1/4">{el.Status_opened || "-"}</p> */}
             </div>
           );
         })}

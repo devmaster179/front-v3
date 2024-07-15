@@ -12,33 +12,51 @@ export type Database = {
       lootboxes: {
         Row: {
           balance: number | null;
+          balance_LOOT: number | null;
+          balance_USDT: number | null;
           created_at: string;
           id: number;
           parent: string | null;
           receiver_id: number | null;
+          receiver_updated_at: string | null;
           sender_id: number | null;
+          sender_updated_at: string | null;
           status: string | null;
+          Status_opened: string | null;
           uuid: string;
+          walletID: string | null;
         };
         Insert: {
           balance?: number | null;
+          balance_LOOT?: number | null;
+          balance_USDT?: number | null;
           created_at?: string;
           id?: number;
           parent?: string | null;
           receiver_id?: number | null;
+          receiver_updated_at?: string | null;
           sender_id?: number | null;
+          sender_updated_at?: string | null;
           status?: string | null;
+          Status_opened?: string | null;
           uuid?: string;
+          walletID?: string | null;
         };
         Update: {
           balance?: number | null;
+          balance_LOOT?: number | null;
+          balance_USDT?: number | null;
           created_at?: string;
           id?: number;
           parent?: string | null;
           receiver_id?: number | null;
+          receiver_updated_at?: string | null;
           sender_id?: number | null;
+          sender_updated_at?: string | null;
           status?: string | null;
+          Status_opened?: string | null;
           uuid?: string;
+          walletID?: string | null;
         };
         Relationships: [];
       };
