@@ -4,19 +4,6 @@ import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import { Lootbox } from "@/components/Lootbox";
 
 export const ClaimPage = () => {
-  const [showText, setShowText] = useState(false);
-  const [showConnectButton, setShowConnectButton] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShowText(true);
-    }, 5000);
-
-    setTimeout(() => {
-      setShowConnectButton(true);
-    }, 7000);
-  });
-
   return (
     <TonConnectUIProvider manifestUrl="https://lootfront.netlify.app/tonconnect-manifest.json">
       <div className="mt-10 flex flex-col items-center justify-center justify-items-center" style={{ paddingTop: '32%' }}>
