@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="617px" height="399px" viewBox="0 0 617 399" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 11</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFF100" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFDE00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFF100" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFDE00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#FFF100" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFDE00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#FFF100" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFDE00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#FFF100" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFDE00" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-11" transform="translate(0.658314, 0.606851)">
+            <path d="M133.105479,5.15720698 L462.425582,0 L392.686668,177.472919 C355.104328,191.15764 326.851071,198 307.926898,198 C289.002725,198 260.589315,191.15764 222.686668,177.472919 L133.105479,5.15720698 Z" id="Rectangle" fill="url(#linearGradient-1)"></path>
+            <g id="Group-10" transform="translate(0.000000, 115.109076)">
+                <polygon id="Rectangle" fill="url(#linearGradient-2)" transform="translate(155.766223, 129.282355) scale(1, -1) rotate(-22.000000) translate(-155.766223, -129.282355) " points="88.1283384 43.712147 175.958233 44.5137967 223.404108 214.854241 208.081424 213.753377"></polygon>
+                <polygon id="Rectangle" fill="url(#linearGradient-3)" transform="translate(117.957717, 110.534073) scale(1, -1) rotate(-22.000000) translate(-117.957717, -110.534073) " points="23.4798385 29.4907759 83.2718026 40.0269575 212.435596 191.57737 193.663517 190.828986"></polygon>
+                <polygon id="Rectangle" fill="url(#linearGradient-4)" transform="translate(264.497397, 166.709594) scale(1, -1) rotate(-22.000000) translate(-264.497397, -166.709594) " points="204.166023 79.5906152 324.82877 77.9731346 255.089856 255.446053 228.269998 249.069176"></polygon>
+            </g>
+            <g id="Group-10" transform="translate(438.838467, 256.293169) scale(-1, 1) translate(-438.838467, -256.293169) translate(262.000000, 115.109076)">
+                <polygon id="Rectangle" fill="url(#linearGradient-3)" transform="translate(117.957717, 110.534073) scale(1, -1) rotate(-22.000000) translate(-117.957717, -110.534073) " points="23.4798385 29.4907759 83.2718026 40.0269575 212.435596 191.57737 193.663517 190.828986"></polygon>
+                <polygon id="Rectangle" fill="url(#linearGradient-5)" transform="translate(275.506091, 177.429017) scale(1, -1) rotate(-22.000000) translate(-275.506091, -177.429017) " points="229.397369 82.8776114 321.614814 94.5075036 251.8759 271.980422 236.038377 270.040696"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

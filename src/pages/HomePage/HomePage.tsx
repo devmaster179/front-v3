@@ -1,5 +1,8 @@
 import { Link } from "@/components/Link/Link";
+import { LockedLootbox } from "@/components/LockedLootbox";
+
 // import { useUserBalance } from "@/hooks/useUserBalance";
+
 import { initInitData } from "@telegram-apps/sdk";
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabase";
@@ -29,7 +32,7 @@ export function HomePage() {
       // Handle no lootbox
       if (!data?.length) {
         // setIsLoading(false);
-        return navigate("/tasks", { replace: true });
+        // return navigate("/tasks", { replace: true });
       }
 
       const { sender_id, receiver_id, parent } = data![0];
@@ -112,7 +115,8 @@ export function HomePage() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-black">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-black"
+    >
       {isSendersLootbox && (
         <span className="text-center mt-50 p-5 pt-50 text-white">
           {`You can't open your lootboxes!`}
@@ -140,10 +144,38 @@ export function HomePage() {
           </span>
         </>
       )}
+      <>
 
-      <Link to="/tasks" className="bg-blue rounded p-2 px-10 text-white">
-        Go!
-      </Link>
+        <div style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingBottom: '30%'
+
+        }}>
+          <LockedLootbox width={220} height={220} />
+        </div>
+        <div style={{
+          position:'absolute', 
+          bottom:'10%', 
+          display:'flex', 
+          flexDirection:'column',
+          justifyContent:'center',
+          alignItems:'center',
+          gap:'20px'
+          }}>
+          <div style={{ color: 'white', textAlign: 'center' }}>
+            <h2 className="toptitle">To open this box</h2>
+            <h2 className="toptitle">you need to fulfill a task</h2>
+          </div>
+          <Link to="/tasks" className="bg-blue rounded p-2 px-10 text-white">
+            Go!
+          </Link>
+        </div>
+      </>
     </main>
   );
 }
