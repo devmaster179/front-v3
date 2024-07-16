@@ -12,9 +12,9 @@ export const LockedLootbox: FC<{ width: number, height: number }> = (props) => (
                 height: `${props.height}px`,
             }}
         >
-            <div className="box-pan">
-                <div className="boxbody">
-                    <img className="lootbox" src={lootbox} alt="" />
+            <div className="lock-box-pan">
+                <div className="lock-boxbody">
+                    <img className="lock-lootbox" src={lootbox} alt="" />
                 </div>
             </div>
         </div>
