@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import { Lootbox } from "@/components/Lootbox";
